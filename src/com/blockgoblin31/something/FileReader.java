@@ -27,6 +27,7 @@ public class FileReader {
                 return null;
             }
         });
-        return Iterator.loop(output, loop);
+        if (loop != null) return Iterator.loop(output, loop);
+        return output;
     }
 }
