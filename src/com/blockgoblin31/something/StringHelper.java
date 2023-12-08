@@ -28,4 +28,27 @@ public class StringHelper {
         Iterator.loop(strings, func);
         return (String) func.get();
     }
+
+    public static String reverseString(String s) {
+        FunctionPasser<Character> string = new FunctionPasser<>() {
+            final StringBuilder string = new StringBuilder();
+
+            @Override
+            public Character get(Character input) {
+                string.insert(0, input);
+                return input;
+            }
+
+            @Override
+            public ArrayList<Character> getFinal(ArrayList<Character> input) {
+                return input;
+            }
+
+            public Object get() {
+                return string.toString();
+            }
+        };
+        Iterator.loop(PrimitiveFixer.charToCharacter(s.toCharArray()), string);
+        return (String) string.get();
+    }
 }

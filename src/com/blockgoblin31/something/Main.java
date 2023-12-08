@@ -24,28 +24,7 @@ public class Main {
         ArrayList<String> reversedLines = Iterator.loop(lines, new FunctionPasser<>() {
             @Override
             public String get(String input) {
-
-                FunctionPasser<Character> string = new FunctionPasser<>() {
-                    final StringBuilder string = new StringBuilder();
-
-                    @Override
-                    public Character get(Character input) {
-                        string.insert(0, input);
-                        return input;
-                    }
-
-                    @Override
-                    public ArrayList<Character> getFinal(ArrayList<Character> input) {
-                        return input;
-                    }
-
-                    public Object get() {
-                        return string.toString();
-                    }
-                };
-
-                Iterator.loop(PrimitiveFixer.charToCharacter(input.toCharArray()), string);
-                return (String) string.get();
+                return StringHelper.reverseString(input);
             }
 
             @Override
@@ -58,6 +37,6 @@ public class Main {
                 return null;
             }
         });
-        Printer.print(StringHelper.joinStrings(reversedLines));
+        Printer.print(reversedLines);
     }
 }
